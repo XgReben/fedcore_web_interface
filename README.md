@@ -84,7 +84,7 @@
 ## 🏗️ Архитектура системы
 
 ### Frontend Architecture
-\`\`\`
+```
 ┌─────────────────────────────────────────────────────────────┐
 │                    Next.js App Router                       │
 ├─────────────────────────────────────────────────────────────┤
@@ -105,10 +105,10 @@
 │  ├── Responsive Design (Mobile-first)                      │
 │  └── Dark/Light Theme Support                              │
 └─────────────────────────────────────────────────────────────┘
-\`\`\`
+```
 
 ### Component Hierarchy
-\`\`\`
+```
 App
 ├── Layout (Global layout with theme provider)
 ├── Sidebar (Navigation with ITMO branding)
@@ -120,7 +120,7 @@ App
 ├── DeploymentsPage (Edge device management)
 ├── DocumentationPage (Help and tutorials)
 └── SettingsModal (Configuration panel)
-\`\`\`
+```
 
 ## 🛠️ Технологический стек
 
@@ -157,24 +157,28 @@ App
 ### Быстрый старт
 
 1. **Клонирование репозитория**
-\`\`\`bash
+```bash
 git clone https://github.com/v1docq/FedCore-Web-Interface.git
 cd FedCore-Web-Interface
-\`\`\`
+```
 
 2. **Установка зависимостей**
-\`\`\`bash
+```bash
 npm install
+```
 # или
+```
 yarn install
+```
 # или
+```
 pnpm install
-\`\`\`
+```
 
 3. **Настройка переменных окружения**
-\`\`\`bash
+```bash
 cp .env.example .env.local
-\`\`\`
+```
 
 Отредактируйте `.env.local`:
 ```env
@@ -210,7 +214,7 @@ pnpm dev
 
 ### Дополнительные команды
 
-\`\`\`bash
+```bash
 # Сборка для продакшена
 npm run build
 
@@ -225,11 +229,11 @@ npm run format
 
 # Проверка типов TypeScript
 npm run type-check
-\`\`\`
+```
 
 ## 📁 Структура проекта
 
-\`\`\`
+```
 fedcore-web-interface/
 ├── 📁 app/                          # Next.js App Router
 │   ├── 📄 layout.tsx               # Корневой layout
@@ -288,7 +292,7 @@ fedcore-web-interface/
 ├── 📄 .env.example                 # Пример переменных окружения
 ├── 📄 .gitignore                   # Git ignore файл
 └── 📄 README.md                    # Документация
-\`\`\`
+```
 
 ## 🧩 Компоненты интерфейса
 
@@ -297,12 +301,12 @@ fedcore-web-interface/
 
 Главная панель управления с обзором всех проектов:
 
-\`\`\`typescript
+```typescript
 interface DashboardProps {
   projects: Project[]
   onProjectSelect: (project: Project) => void
 }
-\`\`\`
+```
 
 **Функциональность**:
 - Отображение карточек проектов с метриками
@@ -315,11 +319,11 @@ interface DashboardProps {
 
 Мастер создания новых проектов ML:
 
-\`\`\`typescript
+```typescript
 interface ProjectCreationProps {
   onCreateProject: (projectData: ProjectData) => void
 }
-\`\`\`
+```
 
 **Этапы создания**:
 1. **Информация о проекте**: Название, тип задачи, модель
@@ -343,7 +347,7 @@ interface ProjectCreationProps {
 
 Каталог доступных моделей:
 
-\`\`\`typescript
+```typescript
 interface Model {
   id: number
   name: string
@@ -358,7 +362,7 @@ interface Model {
   description: string
   tags: string[]
 }
-\`\`\`
+```
 
 **Возможности**:
 - Фильтрация по типу задачи и архитектуре
@@ -371,7 +375,7 @@ interface Model {
 
 Управление датасетами:
 
-\`\`\`typescript
+```typescript
 interface Dataset {
   id: number
   name: string
@@ -385,7 +389,7 @@ interface Dataset {
   tags: string[]
   lastModified: string
 }
-\`\`\`
+```
 
 ### 🚀 Deployments Page Component
 **Файл**: `components/deployments-page.tsx`
@@ -424,7 +428,7 @@ interface Dataset {
 ### Backend Integration
 Интерфейс предназначен для интеграции с FedCore backend API:
 
-\`\`\`typescript
+```typescript
 // Примеры API endpoints
 const API_ENDPOINTS = {
   projects: '/api/projects',
@@ -435,18 +439,18 @@ const API_ENDPOINTS = {
   training: '/api/training',
   monitoring: '/api/monitoring'
 }
-\`\`\`
+```
 
 ### WebSocket Connections
 Для real-time обновлений:
 
-\`\`\`typescript
+```typescript
 // WebSocket для мониторинга обучения
 const trainingSocket = new WebSocket(`${WS_URL}/training/${projectId}`)
 
 // WebSocket для мониторинга устройств
 const deviceSocket = new WebSocket(`${WS_URL}/devices`)
-\`\`\`
+```
 
 ### External Integrations
 - **GitHub API**: Интеграция с репозиториями
@@ -457,7 +461,7 @@ const deviceSocket = new WebSocket(`${WS_URL}/devices`)
 ## 🎨 Дизайн-система и стилизация
 
 ### ITMO Brand Colors
-\`\`\`css
+```css
 :root {
   --itmo-purple: 271 91% 65%;
   --itmo-green: 142 76% 36%;
@@ -466,7 +470,7 @@ const deviceSocket = new WebSocket(`${WS_URL}/devices`)
   --itmo-yellow: 45 93% 47%;
   --itmo-pink: 330 81% 60%;
 }
-\`\`\`
+```
 
 ### Component Styling
 - **Cards**: Градиентные границы и backdrop-blur эффекты
@@ -483,7 +487,7 @@ const deviceSocket = new WebSocket(`${WS_URL}/devices`)
 ## 🚀 Развертывание
 
 ### Vercel (Рекомендуется)
-\`\`\`bash
+```bash
 # Установка Vercel CLI
 npm i -g vercel
 
@@ -492,10 +496,10 @@ vercel
 
 # Продакшен развертывание
 vercel --prod
-\`\`\`
+```
 
 ### Docker
-\`\`\`dockerfile
+```dockerfile
 FROM node:18-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -518,10 +522,10 @@ EXPOSE 3000
 ENV PORT 3000
 
 CMD ["node", "server.js"]
-\`\`\`
+```
 
 ### Netlify
-\`\`\`toml
+```toml
 # netlify.toml
 [build]
   command = "npm run build"
@@ -531,16 +535,16 @@ CMD ["node", "server.js"]
   from = "/*"
   to = "/index.html"
   status = 200
-\`\`\`
+```
 
 ### Environment Variables
-\`\`\`env
+```env
 # Production environment variables
 NEXT_PUBLIC_API_URL=https://api.fedcore.itmo.ru
 NEXT_PUBLIC_WS_URL=wss://api.fedcore.itmo.ru
 NEXTAUTH_URL=https://fedcore.itmo.ru
 DATABASE_URL=postgresql://...
-\`\`\`
+```
 
 ---
 
