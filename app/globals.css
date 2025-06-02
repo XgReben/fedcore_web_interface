@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 271 91% 65%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 271 91% 65%;
+    --radius: 0.5rem;
+
+    /* ITMO Brand Colors */
+    --itmo-purple: 271 91% 65%;
+    --itmo-green: 142 76% 36%;
+    --itmo-blue: 217 91% 60%;
+    --itmo-red: 0 84% 60%;
+    --itmo-yellow: 45 93% 47%;
+    --itmo-pink: 330 81% 60%;
+
+    /* Sidebar specific variables */
+    --sidebar-background: 240 6% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 271 91% 65%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 4% 16%;
+    --sidebar-ring: 271 91% 65%;
+  }
+
+  .dark {
+    --background: 240 6% 10%;
+    --foreground: 0 0% 98%;
+    --card: 240 4% 16%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 4% 16%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 271 91% 65%;
+    --primary-foreground: 240 6% 10%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 4% 16%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 271 91% 65%;
+
+    /* Sidebar specific variables */
+    --sidebar-background: 240 6% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 271 91% 65%;
+    --sidebar-primary-foreground: 240 6% 10%;
+    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 4% 16%;
+    --sidebar-ring: 271 91% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ITMO Grid Background */
+.itmo-grid-background {
+  position: relative;
+  background-image: linear-gradient(rgba(138, 92, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(138, 92, 246, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Responsive grid background */
+@media (max-width: 640px) {
+  .itmo-grid-background {
+    background-size: 20px 20px;
+  }
+}
+
+.itmo-grid-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(138, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ITMO Brand Cards with enhanced styling */
+.itmo-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  backdrop-filter: blur(10px);
+}
+
+.itmo-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, hsl(var(--itmo-purple)) 50%, transparent 100%);
+}
+
+/* ITMO Brand Buttons */
+.itmo-button {
+  background: linear-gradient(135deg, hsl(var(--itmo-purple)) 0%, hsl(var(--itmo-blue)) 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(138, 92, 246, 0.2);
+}
+
+.itmo-button:hover {
+  background: linear-gradient(135deg, hsl(var(--itmo-blue)) 0%, hsl(var(--itmo-purple)) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(138, 92, 246, 0.3);
+}
+
+/* ITMO Brand Status Colors */
+.status-success {
+  background: hsl(var(--itmo-green));
+}
+
+.status-warning {
+  background: hsl(var(--itmo-yellow));
+}
+
+.status-error {
+  background: hsl(var(--itmo-red));
+}
+
+.status-info {
+  background: hsl(var(--itmo-blue));
+}
+
+/* ITMO Brand Typography */
+.itmo-heading {
+  font-weight: 700;
+  background: linear-gradient(135deg, hsl(var(--itmo-purple)) 0%, hsl(var(--itmo-blue)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ITMO Brand Metrics Cards */
+.itmo-metric-card {
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--itmo-purple) / 0.05) 100%);
+  border: 1px solid hsl(var(--itmo-purple) / 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Decorative Elements */
+.itmo-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(138, 92, 246, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(138, 92, 246, 0.8);
+}
+
+/* Responsive dots */
+@media (max-width: 640px) {
+  .itmo-dot {
+    width: 2px;
+    height: 2px;
+  }
+}
+
+.itmo-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent 0%, rgba(138, 92, 246, 0.4) 50%, transparent 100%);
+  height: 1px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  .itmo-card {
+    min-height: 44px;
+  }
+
+  /* Better spacing for mobile */
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+
+  /* Responsive text */
+  .text-4xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3.xl\:grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Ensure proper scrolling on mobile */
+@media (max-width: 640px) {
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Improve form elements on mobile */
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Ensure sidebar is visible on desktop */
+@media (min-width: 768px) {
+  [data-sidebar="sidebar"] {
+    display: block !important;
+  }
+}
+
+/* Fix sidebar width on desktop */
+@media (min-width: 768px) {
+  .group-data-[state="expanded"]:w-[--sidebar-width] {
+    width: var(--sidebar-width) !important;
+  }
+}
