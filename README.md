@@ -177,7 +177,7 @@ cp .env.example .env.local
 \`\`\`
 
 Отредактируйте `.env.local`:
-\`\`\`env
+```env
 # API Configuration
 NEXT_PUBLIC_API_URL=http://localhost:8000
 NEXT_PUBLIC_WS_URL=ws://localhost:8000
@@ -192,16 +192,18 @@ DATABASE_URL=postgresql://user:password@localhost:5432/fedcore
 # Cloud Providers (опционально)
 AWS_ACCESS_KEY_ID=your-aws-key
 AWS_SECRET_ACCESS_KEY=your-aws-secret
-\`\`\`
+```
 
 4. **Запуск в режиме разработки**
-\`\`\`bash
+```bash
 npm run dev
+```
 # или
 yarn dev
 # или
+```
 pnpm dev
-\`\`\`
+```
 
 5. **Открытие в браузере**
 Перейдите по адресу [http://localhost:3000](http://localhost:3000)
